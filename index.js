@@ -15,6 +15,7 @@ const ballRadius = 5;
 const ballMinSpeed = 0.01;
 const ballSpeedStep = -0.0001;
 
+const playBtn = document.getElementById("btn");
 const soundFrequencies = [
   1760, 1567.98, 1396.91, 1318.51, 1174.66, 1046.5, 987.77, 880, 783.99, 698.46,
   659.25, 587.33, 523.25, 493.88, 440, 392, 349.23, 329.63, 293.66, 261.63,
@@ -31,6 +32,12 @@ for (let i = 0; i < num; i++) {
   tracks.push(track);
   balls.push(ball);
 }
+
+playBtn.addEventListener("click", () => {
+  if (getAudioContext().state !== "running") {
+    getAudioContext().resume();
+  }
+});
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
